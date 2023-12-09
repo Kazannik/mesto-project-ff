@@ -2,6 +2,22 @@
 
 Проектная работа Mesto на JavaScript
 
-## Pull request:
+## Спринт 5
 
-https://github.com/Kazannik/mesto-project-ff.git
+Релизовано создание и удаление карточки с помощью JavaScript.
+
+## Спринт 6
+
+Реализовано:
+
+1. Создано инфраструктурное окружение с помощью Webpack;
+2. Код разбит на отдельные модули;
+3. Реализована работа модальных окон:
+   - редактирование профиля;
+   - добавление карточки;
+   - превью фотографии;
+   - действия лайков на карточке.
+
+## Pull request
+
+[https://github.com/Kazannik/mesto-project-ff.git](https://github.com/Kazannik/mesto-project-ff.git)
