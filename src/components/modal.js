@@ -8,12 +8,6 @@ function closeModal(popup) {
   document.removeEventListener("keydown", handleEscClose);
 }
 
-function handleOverlayClose(evt) {
-  if (evt.target === evt.currentTarget) {
-    closeModal(evt.currentTarget);
-  }
-}
-
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_is-opened");
@@ -21,4 +15,4 @@ function handleEscClose(evt) {
   }
 }
 
-export { openModal, closeModal, handleOverlayClose };
+export { openModal, closeModal };
