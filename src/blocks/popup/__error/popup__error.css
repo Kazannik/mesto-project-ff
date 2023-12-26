@@ -1,0 +1,38 @@
+.popup__error {
+  margin: 5px auto 0 auto;
+  padding: 0;
+  color: #ff0000;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  width: 358px;
+  position: absolute;
+  right: 36px;
+}
+
+.popup__error:last-of-type {
+  top: 196px;
+}
+
+.popup__error:first-of-type {
+  top: 138px;
+}
+
+.popup__error_visible {
+  display: block;
+}
+
+@media screen and (max-width: 568px) {
+  .popup__error {
+    max-width: 238px;
+    right: 22px;
+  }
+
+  .popup__error:last-of-type {
+    top: 173px;
+  }
+
+  .popup__error:first-of-type {
+    top: 116px;
+  }
+}
