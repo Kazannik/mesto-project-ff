@@ -9,7 +9,7 @@ import {
   getInitialCards,
   addCard,
   deleteCard,
-  } from "./api.js";
+} from "./api.js";
 
 // @todo: DOM узлы
 const popups = Array.from(document.querySelectorAll(".popup"));
@@ -39,7 +39,9 @@ const profileDescription = document.querySelector(".profile__description");
 const profileImage = document.querySelector(".profile__image");
 
 const buttonOpenPopupCard = document.querySelector(".profile__add-button");
-const buttonConfirmAccept = popupConfirm.querySelector(".confirm_accept__button");
+const buttonConfirmAccept = popupConfirm.querySelector(
+  ".confirm_accept__button"
+);
 
 const validationConfig = {
   formSelector: ".popup__form",
@@ -63,11 +65,10 @@ const confirmDeleteCard = (evt, cardId) => {
 
 const handleConfirmDeleteCard = async (evt) => {
   deleteCard(popupConfirm.dataset.cardId)
-    .then((result) => {
-      const card = document.querySelector(
-        `[data-card-id="${popupConfirm.dataset.cardId}"]`,
-      );
+    .then((res) => {
+      const card = document.getElementById(popupConfirm.dataset.cardId);
       card.remove();
+      popupConfirm.dataset.cardId="";
       closeModal(popupConfirm);
     })
     .catch((err) => {
@@ -86,7 +87,6 @@ const handleFormEditSubmit = async (evt) => {
     .then((userInfo) => {
       profileName.textContent = userInfo.name;
       profileDescription.textContent = userInfo.about;
-      profileImage.style.backgroundImage = `url(${userInfo.avatar})`;
       closeModal(popupProfile);
     })
     .catch((err) => {
@@ -98,8 +98,7 @@ const handleFormEditSubmit = async (evt) => {
         popupFormEditProfile.querySelector(".popup__button")
       );
     });
-  closeModal(popupProfile);
-}
+};
 popupFormEditProfile.addEventListener("submit", handleFormEditSubmit);
 
 buttonOpenPopupProfile.addEventListener("click", function () {
@@ -115,8 +114,6 @@ const handleAvatarFormSubmit = async (evt) => {
   renderLoading(true, popupFormEditAvatar.querySelector(".popup__button"));
   updateUserAvatar(popupFormEditAvatar.link.value)
     .then((userInfo) => {
-      profileName.textContent = userInfo.name;
-      profileDescription.textContent = userInfo.about;
       profileImage.style.backgroundImage = `url(${userInfo.avatar})`;
       closeModal(popupAvatar);
     })
@@ -150,7 +147,7 @@ const handleAddCardFormSubmit = async (evt) => {
         likeCard,
         openPopupImage
       );
-      placesList.append(newCard);      
+      placesList.prepend(newCard);
       closeModal(popupCard);
     })
     .catch((err) => {
@@ -189,14 +186,12 @@ popups.forEach((popup) => {
 
 // Загрузка аватара и карточек
 Promise.all([getInitialUser(), getInitialCards()])
-  .then((data) => {
-    const userInfo = data[0];
+  .then(([userInfo, initialCards]) => {
     userId = userInfo._id;
     profileName.textContent = userInfo.name;
     profileDescription.textContent = userInfo.about;
     profileImage.style.backgroundImage = `url(${userInfo.avatar})`;
-    
-    const initialCards = data[1];
+
     initialCards.forEach((card) => {
       const newCard = createCard(
         card,

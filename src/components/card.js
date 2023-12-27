@@ -5,7 +5,13 @@ const content = document.querySelector("#card-template").content,
   templateCard = content.querySelector(".card");
 
 // @todo: Функция создания карточки
-const createCard = function (item, userId, removeCard, likeCard, openPopupImage) {
+const createCard = function (
+  item,
+  userId,
+  removeCard,
+  likeCard,
+  openPopupImage
+) {
   const newCard = templateCard.cloneNode(true),
     cardImage = newCard.querySelector(".card__image"),
     cardTitle = newCard.querySelector(".card__title"),
@@ -13,11 +19,13 @@ const createCard = function (item, userId, removeCard, likeCard, openPopupImage)
     likeButton = newCard.querySelector(".card__like-button"),
     cardLikeCount = newCard.querySelector(".card__like-count");
 
+  newCard.id = item["_id"];
+
   cardImage.setAttribute("src", item.link);
   cardImage.setAttribute("alt", item.name);
   cardTitle.textContent = item.name;
   cardLikeCount.textContent = item.likes.length;
-  
+
   const isLiked = item.likes.some((like) => like._id === userId);
   if (isLiked) {
     likeButton.classList.add("card__like-button_is-active");
@@ -30,7 +38,7 @@ const createCard = function (item, userId, removeCard, likeCard, openPopupImage)
   } else {
     deleteButton.remove();
   }
-  
+
   likeButton.addEventListener("click", (evt) => {
     likeCard(evt, item._id);
   });

@@ -55,7 +55,9 @@
       <button type="button" class="popup__close" aria-label="Закрыть окно создания карточки"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" id="popup-form-add" name="new-place">
-        <input type="text" name="name" class="popup__input popup__input_type_card-name" id="text-input" placeholder="Название" required>
+        <input type="text" name="name" class="popup__input popup__input_type_card-name" id="text-input" placeholder="Название" minlength="2"
+        maxlength="30" pattern="[a-zA-zа-яА-яёЁ\s\-]+$" 
+        data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
         <span class="popup__error text-input-error"></span>
         <input type="url" name="link" class="popup__input popup__input_type_url" id="link-input" placeholder="Ссылка на картинку" required>
         <span class="popup__error link-input-error"></span>
