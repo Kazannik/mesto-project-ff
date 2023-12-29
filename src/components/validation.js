@@ -121,8 +121,12 @@ const clearValidation = (formElement, validationConfig) => {
     validationConfig.submitButtonSelector
   );
 
-  buttonElement.classList.add(validationConfig.inactiveButtonClass);
-  
+  toggleButtonState(
+    inputList,
+    buttonElement,
+    validationConfig.inactiveButtonClass
+  );
+
   inputList.forEach((inputElement) => {
     hideInputError(
       formElement,

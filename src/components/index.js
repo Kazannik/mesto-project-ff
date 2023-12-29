@@ -127,8 +127,8 @@ const handleAvatarFormSubmit = async (evt) => {
 popupFormEditAvatar.addEventListener("submit", handleAvatarFormSubmit);
 
 buttonEditAvatar.addEventListener("click", (evt) => {
-  clearValidation(popupFormEditAvatar, validationConfig);
   popupFormEditAvatar.reset();
+  clearValidation(popupFormEditAvatar, validationConfig);
   openModal(popupAvatar);
 });
 
@@ -160,8 +160,8 @@ const handleAddCardFormSubmit = async (evt) => {
 popupFormAddCard.addEventListener("submit", handleAddCardFormSubmit);
 
 buttonOpenPopupCard.addEventListener("click", function () {
-  clearValidation(popupFormAddCard, validationConfig);
   popupFormAddCard.reset();
+  clearValidation(popupFormAddCard, validationConfig);
   openModal(popupCard);
 });
 

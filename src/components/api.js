@@ -75,16 +75,6 @@ const deleteLike = async (cardId) => {
   }).then((res) => getResponse(res));
 };
 
-const existsImageFile = async (url) => {
-  return fetch(url, {
-    method: "HEAD",
-  }).then((res) => {
-    if (res.ok) {
-      return result.type.includes("image");
-    }
-  });
-};
-
 export {
   getInitialUser,
   updateUser,
@@ -94,5 +84,4 @@ export {
   deleteCard,
   addLike,
   deleteLike,
-  existsImageFile,
 };
